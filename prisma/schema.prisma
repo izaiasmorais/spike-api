@@ -15,10 +15,3 @@ model User {
 
   @@map("users")
 }
-
-model Task {
-  id          String   @id @default(uuid()) @map("_id")
-  name        String
-  description String
-  createdAt   DateTime @default(now()) @map("created_at")
-}

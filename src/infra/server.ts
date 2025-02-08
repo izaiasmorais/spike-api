@@ -11,6 +11,9 @@ import {
 } from "fastify-type-provider-zod";
 import { errorHandler } from "./error-handler";
 import { env } from "./env/env";
+import { getProfile } from "./http/controllers/get-profile";
+import { signIn } from "./http/controllers/sign-in";
+import { signUp } from "./http/controllers/sign-up";
 
 const port = Number(env.PORT);
 
@@ -47,7 +50,9 @@ app.register(fastifyJwt, {
 });
 
 // Autenticação
-
+app.register(signUp);
+app.register(signIn);
+app.register(getProfile);
 
 try {
 	app.listen({ port, host: "0.0.0.0" });
