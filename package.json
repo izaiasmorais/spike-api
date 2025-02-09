@@ -2,6 +2,9 @@
 	"name": "spike-api",
 	"version": "1.0.0",
 	"main": "dist/infra/server.js",
+	"prisma": {
+		"seed": "ts-node prisma/seed.ts"
+	},
 	"scripts": {
 		"dev": "tsx watch src/infra/server.ts",
 		"start": "node dist/infra/server.js",
@@ -31,11 +34,12 @@
 		"@types/cors": "^2.8.17",
 		"@types/express": "^5.0.0",
 		"@types/jsonwebtoken": "^9.0.8",
-		"@types/node": "^22.7.0",
+		"@types/node": "^22.13.1",
 		"happy-dom": "^16.8.1",
 		"prisma": "^6.3.1",
+		"ts-node": "^10.9.2",
 		"tsx": "^4.19.1",
-		"typescript": "^5.6.2"
+		"typescript": "^5.7.3"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
