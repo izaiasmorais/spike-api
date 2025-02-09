@@ -10,6 +10,7 @@ import { signUpController } from "./http/controllers/sign-up.controller";
 import { deleteUserController } from "./http/controllers/delete-user.controller";
 import { signInController } from "./http/controllers/sign-in.controller";
 import { getProfileController } from "./http/controllers/get-profile.controller";
+import { authMiddleware } from "./http/middleware/auth-middleware";
 
 const port = env.PORT || 3333;
 const app = express();
@@ -20,8 +21,8 @@ app.use(cors());
 
 app.post("/auth/sign-up", signUpController);
 app.post("/auth/sign-in", signInController);
-app.get("/auth/profile", getProfileController);
-app.delete("/auth/delete/:userId", deleteUserController);
+app.get("/auth/profile", authMiddleware, getProfileController);
+app.delete("/auth/delete/:userId", authMiddleware, deleteUserController);
 
 app.use((err: Error, _: Request, res: Response, __: NextFunction) => {
 	if (err instanceof ZodError) {

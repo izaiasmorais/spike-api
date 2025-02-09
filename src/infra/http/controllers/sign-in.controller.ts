@@ -1,5 +1,6 @@
 import { prisma } from "@/infra/database/prisma/prisma";
 import { Request, Response, NextFunction } from "express";
+import { defaultSuccessResponse } from "../responses/responses";
 import { env } from "@/infra/env/env";
 import { z } from "zod";
 import bcrypt from "bcrypt";
@@ -38,8 +39,7 @@ export const signInController = async (
 
 		jwtService.sign(
 			{
-				email,
-				password,
+				sub: user.id,
 			},
 			env.JWT_SECRET,
 			(err: Error | null, token) => {
@@ -47,7 +47,11 @@ export const signInController = async (
 					next(err);
 				}
 
-				res.set("x-access-token", token).status(200).json();
+				res.set("x-access-token", token).status(200).json(
+					defaultSuccessResponse({
+						token,
+					})
+				);
 			}
 		);
 	} catch (error) {
