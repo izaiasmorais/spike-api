@@ -17,7 +17,7 @@ export const authMiddleware = (
 
 	jwt.verify(token, env.JWT_SECRET, (err) => {
 		if (err) {
-			res.status(403).end();
+			res.status(401).json(defaultHttpErrorResponse("Unauthorized"));
 			return;
 		}
 		next();

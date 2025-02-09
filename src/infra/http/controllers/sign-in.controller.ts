@@ -42,6 +42,7 @@ export const signInController = async (
 				sub: user.id,
 			},
 			env.JWT_SECRET,
+			{ expiresIn: "1h" },
 			(err: Error | null, token) => {
 				if (err) {
 					next(err);

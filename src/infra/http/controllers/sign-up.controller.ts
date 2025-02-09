@@ -29,6 +29,7 @@ export const signUpController = async (
 
 		if (userAlreadyExists) {
 			res.status(400).json(defaultHttpErrorResponse("User already exists"));
+			return;
 		}
 
 		const hashedPassword = await bcrypt.hash(password, 8);
