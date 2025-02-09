@@ -12,9 +12,9 @@ const routes: Router = Router();
 routes.post("/auth/sign-up", signUpController);
 routes.post("/auth/sign-in", signInController);
 routes.get("/auth/profile", authMiddleware, getProfileController);
-routes.delete("/auth/delete/:userId", authMiddleware, deleteUserController);
+routes.delete("/auth/delete-account", authMiddleware, deleteUserController);
 
 // Products routes
-routes.get("/products", authMiddleware, getProductsController);
+routes.get("/products", getProductsController);
 
 export default routes;

@@ -5,6 +5,7 @@
 Uma API para gerenciamento de um e-commerce de forma completa desenvolvida com Node.js, Express, PrismaORM e Mongodb.
 
 ## Tecnologias
+
 - Linguagem: [Node.js](https://nodejs.org)
 - Framework: [Express.js](https://expressjs.com/)
 - ORM: [PrismaORM](https://www.prisma.io)
@@ -14,13 +15,16 @@ Uma API para gerenciamento de um e-commerce de forma completa desenvolvida com N
 
 ## Endpoints
 
-| Método     | Endpoint                   | Descrição                                           |
-|------------|----------------------------|-----------------------------------------------------|
-| **POST**   | `/auth/sign-up`            | Registrar um novo usuário                           |
-| **POST**   | `/auth/sign-in`            | Fazer login e obter o token de autenticação         |
-| **GET**    | `/profile`                 | Obter o perfil do usuário autenticado               |
+| Método     | Endpoint               | Descrição                                   |
+| ---------- | ---------------------- | ------------------------------------------- |
+| **POST**   | `/auth/sign-up`        | Registrar um novo usuário                   |
+| **POST**   | `/auth/sign-in`        | Fazer login e obter o token de autenticação |
+| **GET**    | `/auth/profile`        | Obter o perfil do usuário autenticado       |
+| **DELETE** | `/auth/delete-account` | Excluir a conta do usuário autenticado      |
+| **GET**    | `/products`            | Listar os produtos disponíveis              |
 
 ## Instalação
+
 Clone o repositório:
 
 ```bash
@@ -49,6 +53,7 @@ pnpm dlx prisma generate
 ```
 
 ## Executando o Projeto
+
 Inicie o servidor:
 
 ```bash

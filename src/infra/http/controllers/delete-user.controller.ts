@@ -1,11 +1,7 @@
 import { prisma } from "@/infra/database/prisma/prisma";
 import { Request, Response, NextFunction } from "express";
 import { defaultSuccessResponse } from "../responses/responses";
-import { z } from "zod";
-
-const deleteUserSchema = z.object({
-	userId: z.string().uuid("Invalid id"),
-});
+import { getCurrentUserId } from "../hooks/get-current-user-id";
 
 export const deleteUserController = async (
 	req: Request,
@@ -13,11 +9,15 @@ export const deleteUserController = async (
 	next: NextFunction
 ) => {
 	try {
-		const { userId } = deleteUserSchema.parse(req.params);
+		const payload = getCurrentUserId(req, res, next);
+
+		if (!payload) {
+			return;
+		}
 
 		await prisma.user.delete({
 			where: {
-				id: userId,
+				id: payload.userId,
 			},
 		});
 

@@ -1,0 +1,270 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Spike API",
+		"version": "1.0.0",
+		"description": "Uma api para gerenciamento de um e-commerce de tênis."
+	},
+	"tags": [
+		{ "name": "auth", "description": "Authentication endpoints" },
+		{ "name": "products", "description": "Product endpoints" }
+	],
+	"paths": {
+		"/auth/sign-up": {
+			"post": {
+				"tags": ["auth"],
+				"summary": "Register a new user",
+				"description": "Creates a new user account with name, email, and password.",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": ["name", "email", "password"],
+								"properties": {
+									"name": { "type": "string", "example": "John Doe" },
+									"email": {
+										"type": "string",
+										"format": "email",
+										"example": "johndoe@example.com"
+									},
+									"password": {
+										"type": "string",
+										"minLength": 6,
+										"example": "securePass123"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "User registered successfully.",
+						"content": {
+							"application/json": {
+								"example": { "success": true, "error": null, "data": null }
+							}
+						}
+					},
+					"409": {
+						"description": "User already exists.",
+						"content": {
+							"application/json": {
+								"example": {
+									"success": false,
+									"error": "User already registered",
+									"data": null
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/sign-in": {
+			"post": {
+				"tags": ["auth"],
+				"summary": "User login",
+				"description": "Authenticates user and returns a JWT token.",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": ["email", "password"],
+								"properties": {
+									"email": {
+										"type": "string",
+										"format": "email",
+										"example": "johndoe@example.com"
+									},
+									"password": { "type": "string", "example": "securePass123" }
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Login successful",
+						"content": {
+							"application/json": {
+								"example": {
+									"success": true,
+									"error": null,
+									"data": { "token": "your-jwt-token" }
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Invalid credentials",
+						"content": {
+							"application/json": {
+								"example": {
+									"success": false,
+									"error": "Invalid Credentials",
+									"data": null
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/profile": {
+			"get": {
+				"tags": ["auth"],
+				"summary": "Get user profile",
+				"description": "Returns user profile details.",
+				"security": [{ "bearerAuth": [] }],
+				"responses": {
+					"200": {
+						"description": "Profile fetched successfully",
+						"content": {
+							"application/json": {
+								"example": {
+									"success": true,
+									"error": null,
+									"data": {
+										"id": "67a8f27c8f4ca6ad8d50ef7d",
+										"name": "John Doe",
+										"email": "john@example.com"
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"example": {
+									"success": false,
+									"error": "Unauthorized",
+									"data": null
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/delete-account": {
+			"delete": {
+				"tags": ["auth"],
+				"summary": "Delete user account",
+				"description": "Deletes the user account.",
+				"security": [{ "bearerAuth": [] }],
+				"responses": {
+					"204": {
+						"description": "Account deleted successfully",
+						"content": {
+							"application/json": {
+								"example": { "success": true, "error": null, "data": null }
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"example": {
+									"success": false,
+									"error": "Unauthorized",
+									"data": null
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/products": {
+			"get": {
+				"tags": ["products"],
+				"summary": "Fetch products",
+				"description": "Returns a list of products.",
+				"responses": {
+					"200": {
+						"description": "Products fetched successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": { "type": "boolean", "example": true },
+										"error": { "type": "null", "example": null },
+										"data": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "string",
+														"format": "objectid",
+														"example": "67a8f27c8f4ca6ad8d50ef7d"
+													},
+													"title": {
+														"type": "string",
+														"example": "Awesome Sneaker"
+													},
+													"slug": {
+														"type": "string",
+														"example": "awesome-sneaker"
+													},
+													"description": {
+														"type": "string",
+														"example": "A high-quality sneaker."
+													},
+													"price": { "type": "number", "example": 999.99 },
+													"priceWithoutPromotion": {
+														"type": "number",
+														"nullable": true,
+														"example": 1299.99
+													},
+													"promotionPercentage": {
+														"type": "number",
+														"nullable": true,
+														"example": 24
+													},
+													"onSale": { "type": "boolean", "example": true },
+													"images": {
+														"type": "array",
+														"items": { "type": "string" },
+														"example": [
+															"http://example1.png",
+															"http://example2.png"
+														]
+													},
+													"category": {
+														"type": "string",
+														"example": "Basketball"
+													},
+													"rating": { "type": "number", "example": 4.5 },
+													"sizes": {
+														"type": "array",
+														"items": { "type": "number" },
+														"example": [38, 39, 40, 41, 42, 43]
+													},
+													"availableSizes": {
+														"type": "array",
+														"items": { "type": "number" },
+														"example": [38, 40]
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
