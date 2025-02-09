@@ -2,11 +2,11 @@
 
 ## Introdução
 
-Uma API para gerenciamento de um e-commerce de forma completa desenvolvida com Node.js, Fastify, PrismaORM e Mongodb.
+Uma API para gerenciamento de um e-commerce de forma completa desenvolvida com Node.js, Express, PrismaORM e Mongodb.
 
 ## Tecnologias
 - Linguagem: [Node.js](https://nodejs.org)
-- Framework: [Fastify.js](https://www.fastify.io)
+- Framework: [Express.js](https://expressjs.com/)
 - ORM: [PrismaORM](https://www.prisma.io)
 - Banco de Dados: [MongoDB](https://www.mongodb.com/)
 - Autenticação: [JWT](https://jwt.io)
