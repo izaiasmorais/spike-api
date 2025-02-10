@@ -1,4 +1,4 @@
-import { prisma } from "../../database/prisma/prisma";
+import { prisma } from "../../../lib/prisma";
 import {
 	defaultSuccessResponse,
 	defaultHttpErrorResponse,

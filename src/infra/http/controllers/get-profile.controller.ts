@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { getCurrentUserId } from "../hooks/get-current-user-id";
-import { prisma } from "@/infra/database/prisma/prisma";
+import { prisma } from "../../../lib/prisma";
 import {
 	defaultHttpErrorResponse,
 	defaultSuccessResponse,

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { prisma } from "@/infra/database/prisma/prisma";
 import { defaultSuccessResponse } from "../responses/responses";
+import { prisma } from "../../../lib/prisma";
 
 export const getProductsController = async (
 	_: Request,

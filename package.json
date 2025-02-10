@@ -1,7 +1,7 @@
 {
 	"name": "spike-api",
 	"version": "1.0.0",
-	"main": "dist/infra/server.js",
+	"main": "src/infra/server.ts",
 	"prisma": {
 		"seed": "ts-node prisma/seed.ts"
 	},
@@ -42,14 +42,5 @@
 		"ts-node": "^10.9.2",
 		"tsx": "^4.19.1",
 		"typescript": "^5.7.3"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@prisma/client",
-			"@prisma/engines",
-			"bcrypt",
-			"esbuild",
-			"prisma"
-		]
 	}
 }

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { defaultHttpErrorResponse } from "../responses/responses";
-import { env } from "@/infra/env/env";
+import { env } from "../../env/env";
 import jwt from "jsonwebtoken";
 
 export const authMiddleware = (

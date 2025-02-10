@@ -1,26 +1,13 @@
 {
 	"compilerOptions": {
+		"target": "es2020",
 		"module": "commonjs",
-		"declaration": true,
-		"removeComments": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"allowSyntheticDefaultImports": true,
-		"target": "ES2023",
-		"sourceMap": true,
-		"outDir": "./dist",
 		"baseUrl": "./",
-		"incremental": true,
+		"outDir": "./dist",
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"strict": true,
-		"strictNullChecks": true,
-		"noImplicitAny": false,
-		"strictBindCallApply": false,
-		"forceConsistentCasingInFileNames": false,
-		"noFallthroughCasesInSwitch": false,
 		"resolveJsonModule": true,
-		"paths": {
-			"@/*": ["./src/*"]
-		}
+		"strict": true
 	}
 }

@@ -1,4 +1,4 @@
-import { prisma } from "@/infra/database/prisma/prisma";
+import { prisma } from "../../../lib/prisma";
 import { Request, Response, NextFunction } from "express";
 import { defaultSuccessResponse } from "../responses/responses";
 import { getCurrentUserId } from "../hooks/get-current-user-id";

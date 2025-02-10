@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { defaultHttpErrorResponse } from "./http/responses/responses";
-import { AppError } from "@/core/errors/app-error";
 import { ZodError } from "zod";
+import { AppError } from "../core/errors/app-error";
 
 export const errorHandler = (
 	err: Error,

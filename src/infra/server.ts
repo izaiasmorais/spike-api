@@ -4,7 +4,7 @@ import routes from "./routes";
 import swaggerUI from "swagger-ui-express";
 import swaggerDocument from "../docs/swagger.json";
 import { env } from "./env/env";
-import { errorHandler } from "./erro-handler";
+import { errorHandler } from "./error-handler";
 
 const port = env.PORT || 3333;
 const app = express();

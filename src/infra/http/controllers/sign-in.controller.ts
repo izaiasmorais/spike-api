@@ -1,8 +1,9 @@
-import { prisma } from "@/infra/database/prisma/prisma";
+import { prisma } from "../../../lib/prisma";
 import { Request, Response, NextFunction } from "express";
 import { defaultSuccessResponse } from "../responses/responses";
-import { env } from "@/infra/env/env";
+import { env } from "../../env/env";
 import { z } from "zod";
+
 import bcrypt from "bcrypt";
 import jwtService from "jsonwebtoken";
 
