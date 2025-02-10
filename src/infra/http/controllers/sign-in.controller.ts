@@ -49,11 +49,19 @@ export const signInController = async (
 					next(err);
 				}
 
-				res.set("x-access-token", token).status(200).json(
-					defaultSuccessResponse({
-						token,
-					})
-				);
+				res
+					.set("x-access-token", token)
+					.status(200)
+					.json(
+						defaultSuccessResponse({
+							user: {
+								id: user.id,
+								email: user.email,
+								name: user.name,
+							},
+							token,
+						})
+					);
 			}
 		);
 	} catch (error) {

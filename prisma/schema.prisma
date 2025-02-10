@@ -15,21 +15,3 @@ model User {
 
   @@map("users")
 }
-
-model Product {
-  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
-  title                 String
-  slug                  String   @unique
-  description           String
-  price                 Float
-  priceWithoutPromotion Float?   @map("price_without_promotion")
-  promotionPercentage   Float?   @map("promotion_percentage")
-  onSale                Boolean  @default(false) @map("on_sale")
-  images                String[]
-  category              String
-  rating                Float
-  sizes                 Int[]
-  availableSizes        Int[]    @map("available_sizes")
-
-  @@map("products")
-}

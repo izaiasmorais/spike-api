@@ -19,9 +19,6 @@ Uma API para gerenciamento de um e-commerce de forma completa desenvolvida com N
 | ---------- | ---------------------- | ------------------------------------------- |
 | **POST**   | `/auth/sign-up`        | Registrar um novo usuário                   |
 | **POST**   | `/auth/sign-in`        | Fazer login e obter o token de autenticação |
-| **GET**    | `/auth/profile`        | Obter o perfil do usuário autenticado       |
-| **DELETE** | `/auth/delete-account` | Excluir a conta do usuário autenticado      |
-| **GET**    | `/products`            | Listar os produtos disponíveis              |
 
 ## Instalação
 
@@ -41,7 +38,7 @@ pnpm install
 Configure o arquivo .env com suas credenciais:
 
 ```env
-DATABASE_URL="" // a url deve ser de um banco mongodb
+DATABASE_URL=""
 JWT_SECRET=""
 PORT=3333
 ```
