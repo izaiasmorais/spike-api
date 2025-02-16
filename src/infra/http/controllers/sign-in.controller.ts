@@ -1,6 +1,9 @@
 import { prisma } from "../../../lib/prisma";
 import { Request, Response, NextFunction } from "express";
-import { defaultSuccessResponse } from "../responses/responses";
+import {
+	defaultHttpErrorResponse,
+	defaultSuccessResponse,
+} from "../responses/responses";
 import { env } from "../../env/env";
 import { z } from "zod";
 
@@ -27,14 +30,14 @@ export const signInController = async (
 		});
 
 		if (!user) {
-			res.status(400).json({ message: "Invalid Credentials" });
+			res.status(400).json(defaultHttpErrorResponse("Invalid Credentials"));
 			return;
 		}
 
 		const passwordMatch = await bcrypt.compare(password, user.password);
 
 		if (!passwordMatch) {
-			res.status(400).json({ message: "Invalid Credentials" });
+			res.status(400).json(defaultHttpErrorResponse("Invalid Credentials"));
 			return;
 		}
 

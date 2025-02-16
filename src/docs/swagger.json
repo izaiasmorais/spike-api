@@ -92,7 +92,14 @@
 								"example": {
 									"success": true,
 									"error": null,
-									"data": { "token": "your-jwt-token" }
+									"data": {
+										"user": {
+											"id": "67a8f27c8f4ca6ad7d50ef7d",
+											"name": "John Doe",
+											"email": "john@doe.com"
+										},
+										"token": "your-jwt-token"
+									}
 								}
 							}
 						}
